@@ -1,0 +1,488 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A10000010000000000000001 /* CodexMicroLab/CodexMicroLabApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000001 /* CodexMicroLab/CodexMicroLabApp.swift */; };
+		A10000010000000000000002 /* CodexMicroLab/BridgeClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000002 /* CodexMicroLab/BridgeClient.swift */; };
+		A10000010000000000000003 /* CodexMicroLab/ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000003 /* CodexMicroLab/ContentView.swift */; };
+		A10000010000000000000004 /* CodexMicroLab/BLEHidProbe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000004 /* CodexMicroLab/BLEHidProbe.swift */; };
+		A10000010000000000000005 /* CodexMicroLab/QRScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000007 /* CodexMicroLab/QRScannerView.swift */; };
+		A10000010000000000000006 /* CodexMicroLab/Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000008 /* CodexMicroLab/Localizable.xcstrings */; };
+		A10000010000000000000007 /* CodexMicroLab/MicroInputSafety.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000010000000000000009 /* CodexMicroLab/MicroInputSafety.swift */; };
+		B10000010000000000000001 /* MicroInputSafetyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20000010000000000000001 /* MicroInputSafetyTests.swift */; };
+		C10000010000000000000001 /* CodexMicroLabUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20000010000000000000001 /* CodexMicroLabUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A20000010000000000000001 /* CodexMicroLab/CodexMicroLabApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodexMicroLab/CodexMicroLabApp.swift; sourceTree = SOURCE_ROOT; };
+		A20000010000000000000002 /* CodexMicroLab/BridgeClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodexMicroLab/BridgeClient.swift; sourceTree = SOURCE_ROOT; };
+		A20000010000000000000003 /* CodexMicroLab/ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodexMicroLab/ContentView.swift; sourceTree = SOURCE_ROOT; };
+		A20000010000000000000004 /* CodexMicroLab/BLEHidProbe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodexMicroLab/BLEHidProbe.swift; sourceTree = SOURCE_ROOT; };
+		A20000010000000000000005 /* CodexMicroLab/Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = CodexMicroLab/Info.plist; sourceTree = SOURCE_ROOT; };
+		A20000010000000000000006 /* CodexMicroLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodexMicroLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A20000010000000000000007 /* CodexMicroLab/QRScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodexMicroLab/QRScannerView.swift; sourceTree = SOURCE_ROOT; };
+		A20000010000000000000008 /* CodexMicroLab/Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = CodexMicroLab/Localizable.xcstrings; sourceTree = SOURCE_ROOT; };
+		A20000010000000000000009 /* CodexMicroLab/MicroInputSafety.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodexMicroLab/MicroInputSafety.swift; sourceTree = SOURCE_ROOT; };
+		B20000010000000000000001 /* MicroInputSafetyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodexMicroLabTests/MicroInputSafetyTests.swift; sourceTree = SOURCE_ROOT; };
+		B20000010000000000000002 /* CodexMicroLabTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CodexMicroLabTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C20000010000000000000001 /* CodexMicroLabUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodexMicroLabUITests/CodexMicroLabUITests.swift; sourceTree = SOURCE_ROOT; };
+		C20000010000000000000002 /* CodexMicroLabUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CodexMicroLabUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A30000010000000000000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A40000010000000000000001 = {
+			isa = PBXGroup;
+			children = (
+				A40000010000000000000002 /* CodexMicroLab */,
+				B40000010000000000000001 /* CodexMicroLabTests */,
+				C40000010000000000000001 /* CodexMicroLabUITests */,
+				A40000010000000000000003 /* Products */,
+			);
+			sourceTree = SOURCE_ROOT;
+		};
+		B40000010000000000000001 /* CodexMicroLabTests */ = {
+			isa = PBXGroup;
+			children = (
+				B20000010000000000000001 /* MicroInputSafetyTests.swift */,
+			);
+			path = CodexMicroLabTests;
+			sourceTree = SOURCE_ROOT;
+		};
+		C40000010000000000000001 /* CodexMicroLabUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C20000010000000000000001 /* CodexMicroLabUITests.swift */,
+			);
+			path = CodexMicroLabUITests;
+			sourceTree = SOURCE_ROOT;
+		};
+		A40000010000000000000002 /* CodexMicroLab */ = {
+			isa = PBXGroup;
+			children = (
+				A20000010000000000000001 /* CodexMicroLab/CodexMicroLabApp.swift */,
+				A20000010000000000000002 /* CodexMicroLab/BridgeClient.swift */,
+				A20000010000000000000003 /* CodexMicroLab/ContentView.swift */,
+				A20000010000000000000004 /* CodexMicroLab/BLEHidProbe.swift */,
+				A20000010000000000000005 /* CodexMicroLab/Info.plist */,
+				A20000010000000000000007 /* CodexMicroLab/QRScannerView.swift */,
+				A20000010000000000000008 /* CodexMicroLab/Localizable.xcstrings */,
+				A20000010000000000000009 /* CodexMicroLab/MicroInputSafety.swift */,
+			);
+			path = CodexMicroLab;
+			sourceTree = SOURCE_ROOT;
+		};
+		A40000010000000000000003 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A20000010000000000000006 /* CodexMicroLab.app */,
+				B20000010000000000000002 /* CodexMicroLabTests.xctest */,
+				C20000010000000000000002 /* CodexMicroLabUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A50000010000000000000001 /* CodexMicroLab */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A60000010000000000000002 /* Build configuration list for PBXNativeTarget "CodexMicroLab" */;
+			buildPhases = (
+				A30000010000000000000002 /* Sources */,
+				A30000010000000000000001 /* Frameworks */,
+				A30000010000000000000003 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CodexMicroLab;
+			productName = CodexMicroLab;
+			productReference = A20000010000000000000006 /* CodexMicroLab.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B50000010000000000000001 /* CodexMicroLabTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B60000010000000000000002 /* Build configuration list for PBXNativeTarget "CodexMicroLabTests" */;
+			buildPhases = (
+				B30000010000000000000001 /* Sources */,
+				B30000010000000000000002 /* Frameworks */,
+				B30000010000000000000003 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B80000010000000000000001 /* PBXTargetDependency */,
+			);
+			name = CodexMicroLabTests;
+			productName = CodexMicroLabTests;
+			productReference = B20000010000000000000002 /* CodexMicroLabTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C50000010000000000000001 /* CodexMicroLabUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C60000010000000000000002 /* Build configuration list for PBXNativeTarget "CodexMicroLabUITests" */;
+			buildPhases = (
+				C30000010000000000000001 /* Sources */,
+				C30000010000000000000002 /* Frameworks */,
+				C30000010000000000000003 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C80000010000000000000001 /* PBXTargetDependency */,
+			);
+			name = CodexMicroLabUITests;
+			productName = CodexMicroLabUITests;
+			productReference = C20000010000000000000002 /* CodexMicroLabUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A70000010000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 2600;
+				TargetAttributes = {
+					A50000010000000000000001 = {
+						CreatedOnToolsVersion = 26.0;
+					};
+					B50000010000000000000001 = {
+						CreatedOnToolsVersion = 26.6;
+						TestTargetID = A50000010000000000000001;
+					};
+					C50000010000000000000001 = {
+						CreatedOnToolsVersion = 26.6;
+						TestTargetID = A50000010000000000000001;
+					};
+				};
+			};
+			buildConfigurationList = A60000010000000000000001 /* Build configuration list for PBXProject "CodexMicroLab" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A40000010000000000000001;
+			productRefGroup = A40000010000000000000003 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A50000010000000000000001 /* CodexMicroLab */,
+				B50000010000000000000001 /* CodexMicroLabTests */,
+				C50000010000000000000001 /* CodexMicroLabUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A30000010000000000000003 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10000010000000000000006 /* CodexMicroLab/Localizable.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A30000010000000000000002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10000010000000000000001 /* CodexMicroLab/CodexMicroLabApp.swift in Sources */,
+				A10000010000000000000002 /* CodexMicroLab/BridgeClient.swift in Sources */,
+				A10000010000000000000003 /* CodexMicroLab/ContentView.swift in Sources */,
+				A10000010000000000000004 /* CodexMicroLab/BLEHidProbe.swift in Sources */,
+				A10000010000000000000005 /* CodexMicroLab/QRScannerView.swift in Sources */,
+				A10000010000000000000007 /* CodexMicroLab/MicroInputSafety.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B30000010000000000000002 /* Test Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B30000010000000000000003 /* Test Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B30000010000000000000001 /* Test Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B10000010000000000000001 /* MicroInputSafetyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C30000010000000000000002 /* UI Test Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C30000010000000000000003 /* UI Test Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C30000010000000000000001 /* UI Test Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C10000010000000000000001 /* CodexMicroLabUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXContainerItemProxy section */
+		B70000010000000000000001 /* Test target proxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A70000010000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A50000010000000000000001;
+			remoteInfo = CodexMicroLab;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXTargetDependency section */
+		B80000010000000000000001 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A50000010000000000000001 /* CodexMicroLab */;
+			targetProxy = B70000010000000000000001 /* Test target proxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXContainerItemProxy section */
+		C70000010000000000000001 /* UI test target proxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A70000010000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A50000010000000000000001;
+			remoteInfo = CodexMicroLab;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXTargetDependency section */
+		C80000010000000000000001 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A50000010000000000000001 /* CodexMicroLab */;
+			targetProxy = C70000010000000000000001 /* UI test target proxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		A80000010000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_TESTABILITY = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = CodexMicroLab/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.42libft.codex-micro-lab.iphone";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		A80000010000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = CodexMicroLab/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.42libft.codex-micro-lab.iphone";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		A80000010000000000000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A80000010000000000000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		B90000010000000000000001 /* Test Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.42libft.codex-micro-lab.iphone.tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CodexMicroLab.app/CodexMicroLab";
+				SDKROOT = iphoneos;
+					SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+					SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		B90000010000000000000002 /* Test Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.42libft.codex-micro-lab.iphone.tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CodexMicroLab.app/CodexMicroLab";
+				SDKROOT = iphoneos;
+					SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+					SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		C90000010000000000000001 /* UI Test Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.42libft.codex-micro-lab.iphone.uitests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = CodexMicroLab;
+			};
+			name = Debug;
+		};
+		C90000010000000000000002 /* UI Test Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.42libft.codex-micro-lab.iphone.uitests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = CodexMicroLab;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A60000010000000000000001 /* Build configuration list for PBXProject "CodexMicroLab" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A80000010000000000000003 /* Debug */,
+				A80000010000000000000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A60000010000000000000002 /* Build configuration list for PBXNativeTarget "CodexMicroLab" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A80000010000000000000001 /* Debug */,
+				A80000010000000000000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B60000010000000000000002 /* Build configuration list for PBXNativeTarget "CodexMicroLabTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B90000010000000000000001 /* Test Debug */,
+				B90000010000000000000002 /* Test Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C60000010000000000000002 /* Build configuration list for PBXNativeTarget "CodexMicroLabUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C90000010000000000000001 /* UI Test Debug */,
+				C90000010000000000000002 /* UI Test Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A70000010000000000000001 /* Project object */;
+}

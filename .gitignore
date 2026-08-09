@@ -1,0 +1,44 @@
+node_modules/
+dist/
+.DS_Store
+.swiftpm/
+DerivedData/
+ios/build/
+xcuserdata/
+*.xcuserstate
+*.log
+.env
+.env.*
+
+# Local Codex state and generated run material are never repository assets.
+.codex/
+work/
+AGENTS.md
+
+# Finder custom-folder icon metadata.
+Icon?
+
+# Local verification captures expose the user's installed Codex skill list.
+docs/images/codex-micro-settings-connected.png
+docs/images/codex-micro-joystick-customization.png
+
+# Note/article artwork is maintained outside the public source repository.
+docs/images/note-ui-discovery-thumbnail*.png
+docs/asset-lifecycle/note-ui-discovery-thumbnail*.json
+
+# Public image assets are opt-in only after provenance, rights, ownership, and
+# SHA-256 metadata have been recorded. Keep generated design/audit captures out.
+docs/images/
+docs/design-audit-*/
+docs/design-options/
+
+# Signing and device-build material is always local.
+*.mobileprovision
+*.provisionprofile
+*.p12
+*.pfx
+*.cer
+*.crt
+*.key
+*.pem
+*.xcarchive

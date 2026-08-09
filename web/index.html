@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#202123" />
+  <title>Codex Micro Lab</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --bg: #171717;
+      --surface: #202123;
+      --surface-raised: #2a2b2d;
+      --surface-soft: #242526;
+      --border: rgba(255, 255, 255, .10);
+      --border-strong: rgba(255, 255, 255, .17);
+      --text: #f7f7f8;
+      --muted: #a6a6a6;
+      --subtle: #777;
+      --accent: #10a37f;
+      --accent-strong: #19c596;
+      --danger: #ef8f8f;
+      --warning: #e4b45f;
+      --shadow: 0 18px 50px rgba(0, 0, 0, .22);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-width: 320px; background: var(--bg); color: var(--text); }
+    button, summary { font: inherit; }
+    button { cursor: pointer; }
+    button:disabled { cursor: not-allowed; }
+    .shell { width: min(100% - 32px, 940px); margin: 0 auto; padding: 28px 0 72px; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 30px; }
+    .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+    .brand-mark { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 12px; background: var(--accent); color: #07291f; font-weight: 900; font-size: 20px; box-shadow: 0 8px 24px rgba(16, 163, 127, .22); }
+    .brand-copy { min-width: 0; }
+    .brand-copy h1 { margin: 1px 0 0; font-size: 1.25rem; letter-spacing: -.02em; }
+    .eyebrow, .kicker { color: var(--muted); font-size: .70rem; font-weight: 700; letter-spacing: .10em; text-transform: uppercase; }
+    .status-pill { display: inline-flex; align-items: center; gap: 8px; flex: 0 0 auto; padding: 8px 12px; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); background: var(--surface); font-size: .82rem; }
+    .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--warning); box-shadow: 0 0 0 3px rgba(228, 180, 95, .12); }
+    .status-dot.connected { background: var(--accent-strong); box-shadow: 0 0 0 3px rgba(25, 197, 150, .14); }
+    .status-dot.disconnected { background: var(--danger); box-shadow: 0 0 0 3px rgba(239, 143, 143, .14); }
+    .hero { display: grid; grid-template-columns: 1fr auto; gap: 28px; align-items: end; margin-bottom: 18px; }
+    .hero h2 { max-width: 650px; margin: 7px 0 8px; font-size: clamp(1.7rem, 4vw, 2.55rem); letter-spacing: -.045em; line-height: 1.05; }
+    .hero p { max-width: 650px; margin: 0; color: var(--muted); line-height: 1.65; }
+    .hero-action { display: flex; align-items: center; gap: 10px; }
+    .card { padding: 20px; border: 1px solid var(--border); border-radius: 18px; background: var(--surface); box-shadow: var(--shadow); }
+    .card + .card { margin-top: 14px; }
+    .card-head { display: flex; align-items: start; justify-content: space-between; gap: 16px; margin-bottom: 16px; }
+    .card-head h3 { margin: 4px 0 0; font-size: 1.08rem; letter-spacing: -.015em; }
+    .card-head p { margin: 5px 0 0; color: var(--muted); font-size: .88rem; line-height: 1.5; }
+    .event-strip { display: flex; align-items: center; gap: 9px; min-height: 40px; margin-top: 14px; padding: 10px 12px; border: 1px solid var(--border); border-radius: 11px; background: var(--surface-soft); color: var(--muted); font-size: .82rem; }
+    .event-icon { display: grid; place-items: center; width: 20px; height: 20px; border-radius: 6px; background: var(--accent); color: #08271f; font-size: .72rem; font-weight: 900; }
+    .pairing-layout { display: grid; grid-template-columns: 190px 1fr; gap: 22px; align-items: center; }
+    .qr-stage { display: grid; place-items: center; gap: 8px; }
+    .qr { width: 182px; height: 182px; padding: 12px; border-radius: 16px; background: #fff; box-shadow: 0 8px 28px rgba(0, 0, 0, .24); }
+    .qr-caption { color: var(--muted); font-size: .75rem; }
+    .steps { display: grid; gap: 13px; }
+    .step { display: grid; grid-template-columns: 30px 1fr; gap: 10px; align-items: start; }
+    .step-number { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 8px; background: var(--surface-raised); color: var(--muted); font-size: .72rem; font-weight: 700; }
+    .step strong { display: block; margin-bottom: 2px; font-size: .88rem; }
+    .step span { color: var(--muted); font-size: .80rem; line-height: 1.45; }
+    details { border-top: 1px solid var(--border); margin-top: 18px; padding-top: 14px; }
+    summary { cursor: pointer; color: var(--muted); font-size: .82rem; }
+    code { max-width: 100%; overflow-wrap: anywhere; color: var(--text); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .78rem; }
+    .button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 42px; padding: 10px 14px; border: 1px solid transparent; border-radius: 11px; color: var(--text); background: var(--surface-raised); font-weight: 700; transition: transform .12s ease, background .12s ease, border-color .12s ease, box-shadow .12s ease, opacity .12s ease; }
+    .button:hover:not(:disabled) { border-color: var(--border-strong); background: #343537; }
+    .button:active:not(:disabled) { transform: scale(.98); }
+    .button:focus-visible, .hold-button:focus-visible, #joystick:focus-visible { outline: 3px solid rgba(25, 197, 150, .45); outline-offset: 3px; }
+    .button.primary { background: var(--accent); color: #06251d; }
+    .button.primary:hover:not(:disabled) { background: var(--accent-strong); border-color: var(--accent-strong); }
+    .button.subtle { min-height: 34px; padding: 7px 10px; background: transparent; border-color: var(--border); color: var(--muted); font-size: .78rem; }
+    .button:disabled { opacity: .45; }
+    .controls-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .control-group { padding: 15px; border: 1px solid var(--border); border-radius: 14px; background: var(--surface-soft); }
+    .control-group h4 { margin: 0 0 4px; font-size: .92rem; }
+    .control-group p { margin: 0 0 12px; color: var(--muted); font-size: .78rem; line-height: 1.45; }
+    .key-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .command-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .hold-button { display: grid; gap: 3px; min-height: 58px; padding: 9px 7px; border: 1px solid var(--border); border-radius: 11px; background: #2c2d2f; color: var(--text); transition: transform .10s ease, background .10s ease, border-color .10s ease, box-shadow .10s ease; touch-action: none; }
+    .hold-button:hover:not(:disabled) { border-color: var(--border-strong); background: #343537; }
+    .hold-button[data-state="pressed"] { transform: translateY(1px); border-color: var(--accent-strong); background: var(--accent); color: #06251d; box-shadow: 0 0 0 3px rgba(25, 197, 150, .15), 0 8px 20px rgba(16, 163, 127, .22); }
+    .hold-button:disabled { opacity: .38; cursor: not-allowed; }
+    .key-label { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .82rem; font-weight: 800; }
+    .key-state { color: var(--muted); font-size: .68rem; }
+    .hold-button[data-state="pressed"] .key-state { color: #093b2d; font-weight: 800; }
+    .dial-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 10px; }
+    .dial-row .button { min-height: 40px; padding: 8px 5px; font-size: .76rem; }
+    .pulse-active { border-color: var(--accent-strong) !important; background: var(--accent) !important; color: #06251d !important; box-shadow: 0 0 0 3px rgba(25, 197, 150, .15); }
+    .lighting-summary { display: flex; align-items: center; gap: 10px; min-height: 38px; padding: 9px 11px; border-radius: 10px; background: var(--surface-soft); color: var(--muted); font-size: .82rem; }
+    .lighting-summary::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); }
+    .lighting-row { display: flex; flex-wrap: wrap; gap: 16px; align-items: end; margin-top: 16px; }
+    .key-lights { display: grid; grid-template-columns: repeat(6, minmax(54px, 1fr)); gap: 8px; margin-top: 16px; }
+    .key-lights:empty { display: none; }
+    .light-item { min-width: 52px; }
+    .light { height: 30px; border: 1px solid var(--border); border-radius: 9px; background: var(--surface-raised); box-shadow: 0 0 0 transparent; transition: background .2s ease, box-shadow .2s ease; }
+    .light-label { display: block; margin-top: 6px; color: var(--muted); font-size: .68rem; text-align: center; white-space: nowrap; }
+    .threads { display: flex; gap: 9px; overflow-x: auto; margin-top: 16px; padding-bottom: 3px; }
+    .threads .light-item { min-width: 84px; }
+    #joystick { position: relative; width: min(78vw, 330px); height: min(78vw, 330px); margin: 8px auto 0; border: 1px solid var(--border-strong); border-radius: 50%; background: radial-gradient(circle, #343638 0 20%, #2b2c2e 21% 58%, #232426 59%); touch-action: none; }
+    #joystick::before, #joystick::after { content: ""; position: absolute; background: rgba(255, 255, 255, .08); pointer-events: none; }
+    #joystick::before { top: 50%; left: 15%; right: 15%; height: 1px; }
+    #joystick::after { top: 15%; bottom: 15%; left: 50%; width: 1px; }
+    #stick { position: absolute; top: calc(50% - 31px); left: calc(50% - 31px); width: 62px; height: 62px; border: 3px solid rgba(255, 255, 255, .45); border-radius: 50%; background: var(--accent); box-shadow: 0 8px 24px rgba(16, 163, 127, .38); pointer-events: none; transition: transform .12s ease; }
+    .joystick-help { display: flex; justify-content: space-between; gap: 12px; margin-top: 11px; color: var(--muted); font-size: .78rem; }
+    .muted { color: var(--muted); }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    @media (prefers-color-scheme: light) {
+      :root { color-scheme: light; --bg: #f7f7f8; --surface: #fff; --surface-raised: #f1f1f2; --surface-soft: #f7f7f8; --border: rgba(0, 0, 0, .10); --border-strong: rgba(0, 0, 0, .17); --text: #202123; --muted: #6b6b6b; --subtle: #8b8b8b; --shadow: 0 18px 50px rgba(0, 0, 0, .07); }
+      .hold-button { background: #fff; }
+      #joystick { background: radial-gradient(circle, #e4e4e5 0 20%, #ededee 21% 58%, #f6f6f7 59%); }
+      #joystick::before, #joystick::after { background: rgba(0, 0, 0, .10); }
+    }
+    @media (max-width: 680px) {
+      .shell { width: min(100% - 24px, 600px); padding-top: 18px; }
+      .topbar { margin-bottom: 22px; }
+      .hero { display: block; }
+      .hero-action { margin-top: 16px; }
+      .pairing-layout { grid-template-columns: 1fr; }
+      .qr-stage { justify-items: start; }
+      .controls-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 420px) {
+      .status-pill { padding: 7px 9px; font-size: .74rem; }
+      .card { padding: 15px; }
+      .key-grid, .command-grid { gap: 6px; }
+      .key-lights { grid-template-columns: repeat(3, minmax(48px, 1fr)); }
+      .hold-button { min-height: 54px; }
+    }
+  </style>
+</head>
+<body>
+<main class="shell">
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">⌁</div>
+      <div class="brand-copy"><div class="eyebrow">Codex Micro Lab</div><h1>Micro controller</h1></div>
+    </div>
+    <div class="status-pill" role="status" aria-live="polite"><span id="status-dot" class="status-dot"></span><span id="status">ブリッジへ接続中…</span></div>
+  </header>
+
+  <section class="hero">
+    <div>
+      <div class="kicker">Local controller</div>
+      <h2>Codex Microの入力を、ここから操作します。</h2>
+      <p>押している間だけ入力を送信します。指やマウスを離したときは、キーとジョイスティックを安全な状態へ戻します。</p>
+    </div>
+    <div class="hero-action"><button id="reconnect" class="button subtle" type="button">再接続</button></div>
+  </section>
+
+  <div class="event-strip" aria-live="polite"><span class="event-icon">↗</span><span id="last-event">入力イベントを待っています</span></div>
+
+  <section class="card">
+    <div class="card-head"><div><div class="kicker">01 · Setup</div><h3>iPhoneを接続</h3><p>QRを読み取ると、Wi‑FiでもPersonal Hotspotでも自動的に接続先を選びます。</p></div></div>
+    <div class="pairing-layout">
+      <div class="qr-stage"><img class="qr" alt="iPhoneアプリで読み取るペアリングQRコード" src="/pairing.svg" /><span class="qr-caption">iPhoneアプリでスキャン</span></div>
+      <div class="steps">
+        <div class="step"><span class="step-number">1</span><div><strong>iPhoneアプリを開く</strong><span>「QRを読み取る」をタップします。</span></div></div>
+        <div class="step"><span class="step-number">2</span><div><strong>このQRを読み取る</strong><span>アプリが形式・接続先・ポートを検証します。</span></div></div>
+        <div class="step"><span class="step-number">3</span><div><strong>接続先を確認する</strong><span>iPhoneに表示されたallowlist済みIPとポートを確認して接続します。</span></div></div>
+      </div>
+    </div>
+    <p class="muted">ペアリング資格情報はURL・画面・ターミナルへ平文表示しません。QRを共有・撮影しないでください。</p>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><div><div class="kicker">02 · Feedback</div><h3>照明</h3><p>Codexから届いた色を、現在の状態として表示します。</p></div></div>
+    <div id="lighting-summary" class="lighting-summary">Codexからの照明を待っています。</div>
+    <div class="lighting-row"><div class="light-item"><div class="light" id="ambient-light"></div><span class="light-label">Ambient</span></div><div class="light-item"><div class="light" id="keys-light"></div><span class="light-label">Agent Keys</span></div></div>
+    <div class="key-lights" id="key-lights" aria-label="Agent Keyごとの照明"></div>
+    <div class="threads" id="threads"><span class="muted">Thread照明は未受信</span></div>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><div><div class="kicker">03 · Controls</div><h3>入力</h3><p>ボタンが緑色になっている間が「押下中」です。接続前は誤操作防止のため無効です。</p></div></div>
+    <div class="controls-grid">
+      <div class="control-group"><h4>Agent Keys</h4><p>押している間だけpress、離すとrelease。</p><div class="key-grid" id="agents"></div></div>
+      <div class="control-group"><h4>Commands</h4><p>ACTキーは押下中、ダイヤルは1回のpulse。</p><div class="command-grid" id="commands"></div><div class="dial-row"><button class="button" data-key="ENC_CLK" type="button">ダイヤル押下</button><button class="button" data-key="ENC_CC" type="button">↺ 左回転</button><button class="button" data-key="ENC_CW" type="button">↻ 右回転</button></div></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><div><div class="kicker">04 · Direction</div><h3>ジョイスティック</h3><p>円の中をドラッグしてください。離すと必ず中央へ戻ります。</p></div></div>
+    <div id="joystick" role="application" aria-label="ジョイスティック" tabindex="0"><div id="stick"></div></div>
+    <div class="joystick-help"><span>中央：停止</span><span id="joystick-value">距離 0%</span><span>外周：最大</span></div>
+  </section>
+</main>
+<script>
+  let token = '';
+  let bridgePort = 0;
+  const status = document.getElementById('status');
+  const statusDot = document.getElementById('status-dot');
+  const lastEvent = document.getElementById('last-event');
+  let ws;
+  let reconnectTimer;
+  let controlsEnabled = false;
+  const activeHolds = new Map();
+  const setStatus = (text, kind = 'connecting') => { status.textContent = text; statusDot.className = `status-dot ${kind}`; };
+  const note = (text) => { lastEvent.textContent = text; };
+  const send = (message) => { if (ws?.readyState === WebSocket.OPEN) ws.send(JSON.stringify({version: 1, ...message})); };
+  const setControlsEnabled = (enabled) => { controlsEnabled = enabled; document.querySelectorAll('.hold-button, [data-key], #joystick').forEach((element) => { element.disabled = !enabled; element.setAttribute('aria-disabled', String(!enabled)); }); if (!enabled) { releaseAll(); resetJoystick(); } };
+  const release = (key, agent, button) => { const id = `${key}:${agent ?? ''}`; if (!activeHolds.has(id)) return; send({type: 'input.hid', input: {key, act: 0, ...(agent == null ? {} : {agent})}}); activeHolds.delete(id); button?.classList.remove('pressed'); button?.setAttribute('data-state', 'released'); button?.setAttribute('aria-pressed', 'false'); button?.querySelector('.key-state')?.replaceChildren(document.createTextNode('release')); note(`${key} release`); };
+  const releaseAll = () => { for (const hold of [...activeHolds.values()]) release(hold.key, hold.agent, hold.button); };
+  const hold = (button, key, agent) => { if (!controlsEnabled) return; const id = `${key}:${agent ?? ''}`; if (activeHolds.has(id)) return; activeHolds.set(id, {key, agent, button}); button.classList.add('pressed'); button.setAttribute('data-state', 'pressed'); button.setAttribute('aria-pressed', 'true'); button.querySelector('.key-state')?.replaceChildren(document.createTextNode('press')); send({type: 'input.hid', input: {key, act: 1, ...(agent == null ? {} : {agent})}}); note(`${key} press · 押下中`); };
+  const addHoldButton = (parent, key, agent) => { const button = document.createElement('button'); button.type = 'button'; button.className = 'hold-button'; button.disabled = true; button.setAttribute('aria-pressed', 'false'); button.setAttribute('data-state', 'released'); button.innerHTML = `<span class="key-label">${key}</span><span class="key-state">release</span>`; button.addEventListener('pointerdown', (event) => { event.preventDefault(); button.setPointerCapture?.(event.pointerId); hold(button, key, agent); }); button.addEventListener('pointerup', () => release(key, agent, button)); button.addEventListener('pointercancel', () => release(key, agent, button)); button.addEventListener('lostpointercapture', () => release(key, agent, button)); parent.append(button); };
+  for (let i = 0; i < 6; i++) addHoldButton(document.getElementById('agents'), `AG0${i}`, i);
+  ['ACT06','ACT07','ACT08','ACT09','ACT10','ACT11','ACT12'].forEach((key) => addHoldButton(document.getElementById('commands'), key));
+  const pulse = (key, button) => { if (!controlsEnabled) return; send({type: 'input.hid', input: {key, act: 2}}); button.classList.add('pulse-active'); window.setTimeout(() => button.classList.remove('pulse-active'), 180); note(`${key} pulse · 送信済み`); };
+  document.querySelectorAll('[data-key]').forEach((button) => button.addEventListener('click', () => pulse(button.dataset.key, button)));
+  document.addEventListener('pointerup', releaseAll); document.addEventListener('pointercancel', releaseAll); window.addEventListener('blur', releaseAll); document.addEventListener('visibilitychange', () => { if (document.hidden) { releaseAll(); resetJoystick(); } }); window.addEventListener('beforeunload', releaseAll);
+  const loadBootstrap = async () => { if (token && bridgePort) return; const response = await fetch('/bootstrap', {cache: 'no-store', credentials: 'same-origin'}); if (!response.ok) throw new Error('bootstrap failed'); const value = await response.json(); if (value.version !== 1 || !/^[0-9a-f]{32}$/i.test(value.token) || !Number.isInteger(value.bridgePort) || value.bridgePort < 1024 || value.bridgePort > 65535) throw new Error('invalid bootstrap'); token = value.token; bridgePort = value.bridgePort; };
+  const openSocket = async () => { if (reconnectTimer) clearTimeout(reconnectTimer); releaseAll(); ws?.close(); setControlsEnabled(false); setStatus('ブリッジへ接続中…'); try { await loadBootstrap(); } catch { setStatus('ローカル認証情報を取得できません', 'disconnected'); note('microctl startを再起動してください'); return; } ws = new WebSocket(`ws://127.0.0.1:${bridgePort}`); ws.onopen = () => { send({type: 'hello', role: 'web', token}); note('ブリッジに接続しました。状態を確認中…'); }; ws.onerror = () => { setControlsEnabled(false); setStatus('ブリッジに接続できません', 'disconnected'); note('Macでbridgeが起動しているか確認してください'); }; ws.onclose = () => { setControlsEnabled(false); setStatus('ブリッジ切断。再接続します…', 'disconnected'); if (reconnectTimer) clearTimeout(reconnectTimer); reconnectTimer = setTimeout(openSocket, 1500); }; ws.onmessage = (event) => { let message; try { message = JSON.parse(event.data); } catch { return; } if (message.type === 'hello.ok') { setControlsEnabled(true); setStatus('ブリッジ接続済み', 'connected'); note('入力受付中'); } if (message.type === 'connection.state') { const available = message.state === 'available'; setControlsEnabled(available); setStatus(available ? 'ブリッジ接続済み' : 'コントローラ未接続', available ? 'connected' : 'disconnected'); } if (message.type === 'lighting.snapshot') updateLights(message.lighting); }; };
+  document.getElementById('reconnect').addEventListener('click', openSocket);
+  setInterval(() => send({type: 'heartbeat', nonce: crypto.randomUUID()}), 10000);
+  const cssColor = (value) => { const fromPacked = (packed) => { const number = Number(packed); if (!Number.isFinite(number)) return null; return `rgb(${[(number >> 16) & 255, (number >> 8) & 255, number & 255].join(',')})`; }; if (typeof value === 'number') return fromPacked(value); if (typeof value === 'string') return value; if (Array.isArray(value) && value.length >= 3) return `rgb(${value.slice(0, 3).map(n => Math.max(0, Math.min(255, Number(n) || 0))).join(',')})`; if (value && typeof value === 'object') { if (value.c !== undefined) return fromPacked(value.c); const nested = value.color ?? value.rgb; if (nested) return cssColor(nested); const r = value.r ?? value.red, g = value.g ?? value.green, b = value.b ?? value.blue; if ([r, g, b].every(n => Number.isFinite(Number(n)))) return `rgb(${[r, g, b].map(n => Math.max(0, Math.min(255, Number(n)))).join(',')})`; } return null; };
+  const paint = (element, color) => { if (!element) return; if (color) { element.style.background = color; element.style.boxShadow = `0 0 18px ${color}`; } else { element.style.background = ''; element.style.boxShadow = ''; } };
+  const updateLights = (lighting) => { const keys = lighting?.keys || {}; const sharedKeyColor = cssColor(keys.c ?? keys.color ?? keys.rgb ?? keys); paint(document.getElementById('keys-light'), sharedKeyColor); paint(document.getElementById('ambient-light'), cssColor(lighting?.ambient?.c ?? lighting?.ambient)); const keyLights = document.getElementById('key-lights'); keyLights.replaceChildren(); const perKeyEntries = Object.entries(keys).filter(([, value]) => value && typeof value === 'object' && cssColor(value)); for (const [key, value] of perKeyEntries) { const item = document.createElement('div'); item.className = 'light-item'; const light = document.createElement('div'); light.className = 'light'; paint(light, cssColor(value)); const label = document.createElement('span'); label.className = 'light-label'; label.textContent = key; item.append(light, label); keyLights.append(item); } const threads = document.getElementById('threads'); threads.replaceChildren(); for (const [index, thread] of (Array.isArray(lighting?.threads) ? lighting.threads : []).entries()) { const item = document.createElement('div'); item.className = 'light-item'; const light = document.createElement('div'); light.className = 'light'; paint(light, cssColor(thread)); const label = document.createElement('span'); label.className = 'light-label'; label.textContent = thread?.id || `Thread ${index + 1}`; item.append(light, label); threads.append(item); } if (!threads.children.length) threads.innerHTML = '<span class="muted">Thread照明は未受信</span>'; const threadCount = Array.isArray(lighting?.threads) ? lighting.threads.length : 0; const keyCount = perKeyEntries.length; document.getElementById('lighting-summary').textContent = `Ambient、Agent Keys${keyCount ? ` ${keyCount}色` : ''}、Thread ${threadCount}件を受信済み`; };
+  const joystick = document.getElementById('joystick'); const stick = document.getElementById('stick'); let joystickActive = false;
+  const resetJoystick = () => { if (!joystickActive && stick.style.transform === '') return; joystickActive = false; stick.style.transform = ''; document.getElementById('joystick-value').textContent = '距離 0%'; send({type: 'input.joystick', input: {angle: 0, distance: 0}}); };
+  const move = (event) => { if (!controlsEnabled) return; const rect = joystick.getBoundingClientRect(); const x = event.clientX - rect.left - rect.width / 2; const y = event.clientY - rect.top - rect.height / 2; const radius = rect.width / 2 - 31; const length = Math.max(1, Math.hypot(x, y)); const distance = Math.min(1, length / radius); const angle = Math.atan2(-y, x); const scale = distance * radius / length; joystickActive = true; stick.style.transform = `translate(${x * scale}px, ${y * scale}px)`; document.getElementById('joystick-value').textContent = `距離 ${Math.round(distance * 100)}%`; send({type: 'input.joystick', input: {angle, distance}}); };
+  joystick.addEventListener('pointerdown', (event) => { if (!controlsEnabled) return; event.preventDefault(); joystick.setPointerCapture(event.pointerId); move(event); }); joystick.addEventListener('pointermove', (event) => { if (joystick.hasPointerCapture(event.pointerId)) move(event); }); joystick.addEventListener('pointerup', resetJoystick); joystick.addEventListener('pointercancel', resetJoystick); joystick.addEventListener('lostpointercapture', resetJoystick);
+  openSocket();
+</script>
+</body>
+</html>
