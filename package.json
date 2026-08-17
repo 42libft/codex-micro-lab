@@ -22,15 +22,15 @@
     "check": "npm run build && npm test"
   },
   "dependencies": {
-    "@electron/asar": "^3.4.1",
+    "@electron/asar": "^4.2.1",
     "@types/qrcode": "^1.5.6",
     "qrcode": "^1.5.4",
     "ws": "^8.18.0"
   },
   "devDependencies": {
-    "@types/node": "^22.15.0",
+    "@types/node": "^26.2.0",
     "@types/ws": "^8.5.14",
-    "tsx": "^4.19.3",
-    "typescript": "^5.8.3"
+    "tsx": "^4.23.12",
+    "typescript": "^7.0.2"
   }
 }
